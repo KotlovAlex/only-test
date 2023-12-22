@@ -149,7 +149,7 @@ export const Bullet = styled.div`
 
 export const HorizontalLine = styled.div`
   position: absolute;
-  bottom: 215px;
+  bottom: 258px;
   width: 88%;
   height: 0;
   border-bottom: 1px solid ${({theme}) => theme.colors.borders};

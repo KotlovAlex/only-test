@@ -189,8 +189,8 @@ export const Title = styled.span`
   }
 
   @media (max-width: 640px) {
-    top: 240px;
-    left: 30px;
+    top: 250px;
+    left: 20px;
   }
 `
 

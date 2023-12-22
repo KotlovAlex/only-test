@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { RelativeContainer, Lines, Button, DisabledButton, Title, DatePaginator, Circle, Container, DateFirst, DateLast, Dates, Heading, InnerHorizontalLine, InnerVerticalLine, OuterBorders, Point, Themes, PageButtons, ArrowRight, ArrowLeft } from './HistoryBlock.styled'
+import { RelativeContainer, Title, Container, DateFirst, DateLast, Dates, Heading} from './HistoryBlock.styled'
 import Slider from '../Slider/Slider';
 import { getPointsOnCircle, shiftNum } from '../utils/math';
 import { IData } from '../types/types';
+import BackgroundLines from '../BackgroundLines/BackgroundLines';
+import DatePaginator from '../DatePaginator/DatePaginator';
+import CircleLinks from '../CircleLinks/CircleLinks';
 
 type Props = {
   data: IData,
@@ -25,45 +28,27 @@ const HistoryBlock = ({data} :Props) => {
     return () => clearTimeout(timeoutId);
   },[isVisible])
   return <Container>
-          <Lines>
-            <OuterBorders></OuterBorders>
-            <InnerVerticalLine></InnerVerticalLine>
-            <InnerHorizontalLine></InnerHorizontalLine>
-            <Circle></Circle>
-            <Title className={isVisible ? 'show' : ''}>{themes[currPoint - 1][1]}</Title>
-          </Lines>
+          <BackgroundLines></BackgroundLines>
+          <RelativeContainer className={isVisible ? 'show' : ''}>
+            <Title >{themes[currPoint - 1][1]}</Title>
+          </RelativeContainer>
           <Heading>Исторические <br /> даты</Heading>
           <Dates>
             <DateFirst>{slides[currPoint][0][0]}</DateFirst>
             <DateLast>{slides[currPoint][slides[currPoint].length - 1][0]}</DateLast>
           </Dates>
-          <Themes>
-            {themes.map((el, index) => {
-                return <Point 
-                  key={el[0]} 
-                  onClick={() => changingCurrPoint(el[0])} 
-                  className={el[0] === currPoint ? 'active' : ''} 
-                  $x={points[shiftNum(el[0], currPoint, length)][0]}
-                  $y={points[shiftNum(el[0], currPoint, length)][1]}
-                >
-                  {themes[el[0] - 1][0]}
-                </Point>
-              }
-            )}
-          </Themes>
-          <DatePaginator>
-            <p>0{currPoint}/0{length}</p>
-            <PageButtons>
-              {currPoint == 1 
-                ? <DisabledButton><ArrowLeft></ArrowLeft></DisabledButton>
-                : <Button onClick={() => changingCurrPoint(currPoint - 1)}><ArrowLeft></ArrowLeft></Button>
-              }
-              {currPoint == length
-                ? <DisabledButton><ArrowRight></ArrowRight></DisabledButton>
-                : <Button onClick={() => changingCurrPoint(currPoint + 1)}><ArrowRight></ArrowRight></Button>
-              }
-            </PageButtons>
-          </DatePaginator>
+          <CircleLinks
+            themes={themes}
+            points={points}
+            length={length}
+            currPoint={currPoint}
+            changingCurrPoint={changingCurrPoint}
+          ></CircleLinks>
+          <DatePaginator 
+          currPage={currPoint} 
+          pages={length} 
+          changingCurrPoint={changingCurrPoint}
+          ></DatePaginator>
           <RelativeContainer className={isVisible ? 'show' : ''}>
             <Slider data={slides[currPoint]}></Slider>
           </RelativeContainer>

@@ -1,8 +1,6 @@
 import { DefaultTheme } from 'styled-components';
 
 const theme: DefaultTheme = {
-    fonts: {},
-    variables: {},
     colors: {
         black: '#000000',
         white: '#ffffff',
@@ -12,11 +10,7 @@ const theme: DefaultTheme = {
         pink: '#EF5DA8',
         iris100: '#5D5FEF',
         background: '#F4F5F9',
-    },
-    breakpoints: {
-        sm: '640px',
-        fhd: '1920px',
-    },
+    }
 };
 
 export default theme;

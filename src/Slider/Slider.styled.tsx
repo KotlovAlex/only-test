@@ -126,7 +126,7 @@ export const ArrowRight = styled.div`
 
 export const Paginator = styled.div`
   position: relative;
-  top: 40px;
+  top: 90px;
   display: flex;
   justify-content: center;
   gap:7px;

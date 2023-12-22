@@ -181,7 +181,7 @@ export const Title = styled.span`
   top: 21.9074vh;
   left: calc(38vw + 170px);
   opacity: 0;
-  transition: opacity .1s;
+  transition: opacity .2s;
   user-select: none;
 
   &.show {
@@ -189,7 +189,8 @@ export const Title = styled.span`
   }
 
   @media (max-width: 640px) {
-    display: none;
+    top: 240px;
+    left: 30px;
   }
 `
 
@@ -275,4 +276,10 @@ export const DisabledButton = styled(Button)`
 
 export const RelativeContainer = styled.div`
   position: relative;
+  opacity: 0;
+  transition: all .2s;
+
+  &.show {
+    opacity: 1;
+  }
 `

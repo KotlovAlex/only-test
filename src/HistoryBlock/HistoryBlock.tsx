@@ -56,15 +56,15 @@ const HistoryBlock = ({data} :Props) => {
             <PageButtons>
               {currPoint == 1 
                 ? <DisabledButton><ArrowLeft></ArrowLeft></DisabledButton>
-                : <Button onClick={() => setCurrPoint(prev => prev - 1)}><ArrowLeft></ArrowLeft></Button>
+                : <Button onClick={() => changingCurrPoint(currPoint - 1)}><ArrowLeft></ArrowLeft></Button>
               }
               {currPoint == length
                 ? <DisabledButton><ArrowRight></ArrowRight></DisabledButton>
-                : <Button onClick={() => setCurrPoint(prev => prev + 1)}><ArrowRight></ArrowRight></Button>
+                : <Button onClick={() => changingCurrPoint(currPoint + 1)}><ArrowRight></ArrowRight></Button>
               }
             </PageButtons>
           </DatePaginator>
-          <RelativeContainer>
+          <RelativeContainer className={isVisible ? 'show' : ''}>
             <Slider data={slides[currPoint]}></Slider>
           </RelativeContainer>
         </Container>

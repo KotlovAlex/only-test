@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react'
+import React from 'react'
 import { ArrowLeft, ArrowRight, Button, DisabledButton, PageButtons, Paginator } from './DatePaginator.styled';
 
 type Props = {

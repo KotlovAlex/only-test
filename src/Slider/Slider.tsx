@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react'
-import { ArrowLeft, ArrowRight, PrevButton, NextButton, SwiperStyled } from './Slider.styled'
+import { HorizontalLine, Bullet, Paginator, ArrowLeft, ArrowRight, PrevButton, NextButton, SwiperStyled } from './Slider.styled'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperClass } from 'swiper/types';
 import { Pagination, Navigation } from 'swiper/modules'
@@ -13,6 +13,7 @@ type Props = {
 
 const Slider = ({data}: Props) => {
   const [swiperRef, setSwiperRef] = useState<SwiperClass>();
+  const [activeIndex, setActiveIndex] = useState<number>(0);
   const [isBeginning, setIsBeginning] = useState<boolean>(true);
   const [isEnd, setIsEnd] = useState<boolean>(false);
 
@@ -25,6 +26,7 @@ const Slider = ({data}: Props) => {
   }, [swiperRef]);
 
   const paginationUpdateHandler = useCallback(() => {
+    if (swiperRef?.activeIndex !== undefined) setActiveIndex(swiperRef?.activeIndex);
     if (swiperRef?.isBeginning) setIsBeginning(true);
     else if (swiperRef?.isEnd) { 
       setIsEnd(true);
@@ -41,21 +43,26 @@ const Slider = ({data}: Props) => {
 
   useEffect(() => {
 
-  },[swiperRef])
+  },[swiperRef, activeIndex])
 
   return (
     <>
       <PrevButton style={swiperRef?.isBeginning ? displayNone : undefined} onClick={handlePrevious}><ArrowLeft></ArrowLeft></PrevButton>
       <SwiperStyled
-        slidesPerView={3}
-        spaceBetween={80}
-        pagination={{
-          clickable: true,
-        }}
+        slidesPerView={1.5}
+        spaceBetween={20}
         onPaginationUpdate={paginationUpdateHandler}
+        pagination
         onSwiper={setSwiperRef}
         modules={[Pagination, Navigation]}
         className="mySwiper"
+        watchSlidesProgress={true}
+        breakpoints={{
+          640: {
+            slidesPerView: 3,
+            spaceBetween: 80,
+          }
+        }}
       >
         {data.map(el => 
           <SwiperSlide key={el[0]}>
@@ -65,6 +72,10 @@ const Slider = ({data}: Props) => {
         )}
       </SwiperStyled>
       <NextButton style={swiperRef?.isEnd ? displayNone : undefined} onClick={handleNext}><ArrowRight></ArrowRight></NextButton>
+      <Paginator>
+        <HorizontalLine></HorizontalLine>
+        {data.map((_, index) =><Bullet onClick={() => swiperRef?.slideTo(index)} className={activeIndex === index ? 'active' : ''}></Bullet>)}
+      </Paginator>
     </>
   )
 }

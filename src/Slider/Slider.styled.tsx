@@ -11,15 +11,27 @@ export const SwiperStyled = styled(Swiper)`
   position: relative;
   margin-top: 50px;
 
+  & .swiper-pagination {
+    display: none;
+  }
+
   & .swiper-wrapper {
     cursor: grab;
 
     & .swiper-slide {
-      font-size: 18px;
+      opacity: 0.45;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       align-items: flex-start;
+
+      &.swiper-slide-fully-visible {
+        opacity: 1;
+      }
+
+      &.swiper-slide-active {
+        opacity: 1;
+      }
 
       & .year {
         color: #3877EE;
@@ -41,11 +53,31 @@ export const SwiperStyled = styled(Swiper)`
     }
   }
 
-  @media (min-width: 640px) {
-    .swiper-pagination {
-      display: none;
+  @media (max-width: 640px) {
+    width: calc(100% - 20px);
+    margin-top: 0;
+    margin-left: 20px;
+    margin-right: 0;
+
+    && .swiper-slide {
+      & .year {
+        font-family: Bebas Neue;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 19px;
+        letter-spacing: 0em;
+        text-align: left;
+      }
+      & .text {
+        font-family: PT Sans;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0em;
+        text-align: left;
+      }
     }
-  } 
+  }
 `
 
 const Button = styled.button`
@@ -60,6 +92,10 @@ const Button = styled.button`
   border-radius: 50%;
   background-color: #fff;
   cursor: pointer;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
 `
 
 export const PrevButton = styled(Button)`
@@ -86,4 +122,35 @@ export const ArrowRight = styled.div`
   border-top: 2px solid ${({ theme }) => theme.colors.lightBlue};
   border-left: 2px solid ${({ theme }) => theme.colors.lightBlue};
   transform: rotate(135deg);
+`
+
+export const Paginator = styled.div`
+  position: relative;
+  top: 40px;
+  display: flex;
+  justify-content: center;
+  gap:7px;
+
+  @media (min-width: 641px) {
+    display: none;
+  }
+`
+
+export const Bullet = styled.div`
+  width: 8px; 
+  height: 8px; 
+  background: ${({theme}) => theme.colors.borders}; 
+  border-radius: 50%;
+
+  &.active {
+    background: ${({theme}) => theme.colors.blackBlue}; 
+  }
+`
+
+export const HorizontalLine = styled.div`
+  position: absolute;
+  bottom: 215px;
+  width: 88%;
+  height: 0;
+  border-bottom: 1px solid ${({theme}) => theme.colors.borders};
 `

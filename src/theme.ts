@@ -14,7 +14,7 @@ const theme: DefaultTheme = {
         background: '#F4F5F9',
     },
     breakpoints: {
-        sm: '320px',
+        sm: '640px',
         fhd: '1920px',
     },
 };

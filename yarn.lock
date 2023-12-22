@@ -8758,6 +8758,11 @@ style-loader@^3.3.1:
   resolved "https://registry.yarnpkg.com/style-loader/-/style-loader-3.3.3.tgz#bba8daac19930169c0c9c96706749a597ae3acff"
   integrity sha512-53BiGLXAcll9maCYtZi2RCQZKa8NQQai5C4horqKyRmHj9H7QmcUyucrH+4KW/gBQbXM2AsB0axoEcFZPlfPcw==
 
+styled-breakpoints@^12.1.9:
+  version "12.1.9"
+  resolved "https://registry.yarnpkg.com/styled-breakpoints/-/styled-breakpoints-12.1.9.tgz#b113e3d387da3904ca3632cb20eae74c309f51b1"
+  integrity sha512-u5I1CQx7SZPthsXasGcbcab3Ori+/zO2GCK3CPfuUBVl/fPXTi+oXYNm9ysF97LLF1g8tchb8Dn9oU27ugzQsg==
+
 styled-components@^6, styled-components@^6.1.2:
   version "6.1.2"
   resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-6.1.2.tgz#88bd9d446bea254619fc265c93efd73cc5776595"
@@ -9353,11 +9358,6 @@ wbuf@^1.1.0, wbuf@^1.7.3:
   integrity sha512-O84QOnr0icsbFGLS0O3bI5FswxzRr8/gHwWkDlQFskhSPryQXvrTMxjxGP4+iWYoauLoBvfDpkrOauZ+0iZpDA==
   dependencies:
     minimalistic-assert "^1.0.0"
-
-web-vitals@^3.5.0:
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/web-vitals/-/web-vitals-3.5.0.tgz#3a5571f00743ecd059394b61e0adceec7fac2634"
-  integrity sha512-f5YnCHVG9Y6uLCePD4tY8bO/Ge15NPEQWtvm3tPzDKygloiqtb4SVqRHBcrIAqo2ztqX5XueqDn97zHF0LdT6w==
 
 webidl-conversions@^4.0.2:
   version "4.0.2"

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { RelativeContainer, Lines, Button, DisabledButton, Title, DatePaginator, Circle, Container, DateFirst, DateLast, Dates, Heading, InnerHorizontalLine, InnerVerticalLine, OuterBorders, Point, Themes, CurrentPage, PageButtons, ArrowRight, ArrowLeft } from './HistoryBlock.styled'
+import { RelativeContainer, Lines, Button, DisabledButton, Title, DatePaginator, Circle, Container, DateFirst, DateLast, Dates, Heading, InnerHorizontalLine, InnerVerticalLine, OuterBorders, Point, Themes, PageButtons, ArrowRight, ArrowLeft } from './HistoryBlock.styled'
 import Slider from '../Slider/Slider';
 import { getPointsOnCircle, shiftNum } from '../utils/math';
 import { IData } from '../types/types';
@@ -39,14 +39,10 @@ const HistoryBlock = ({data} :Props) => {
           </Dates>
           <Themes>
             {themes.map((el, index) => {
-              console.log([el[0], currPoint]);
-              console.log((el[0] + currPoint - 1) % (length + 1) - 1);
                 return <Point 
                   key={el[0]} 
                   onClick={() => changingCurrPoint(el[0])} 
                   className={el[0] === currPoint ? 'active' : ''} 
-                  // $x={points[el[0] - 1][0]} 
-                  // $y={points[el[0] - 1][1]} 
                   $x={points[shiftNum(el[0], currPoint, length)][0]}
                   $y={points[shiftNum(el[0], currPoint, length)][1]}
                 >
@@ -56,7 +52,7 @@ const HistoryBlock = ({data} :Props) => {
             )}
           </Themes>
           <DatePaginator>
-            <CurrentPage>0{currPoint}/06</CurrentPage>
+            <p>0{currPoint}/0{length}</p>
             <PageButtons>
               {currPoint == 1 
                 ? <DisabledButton><ArrowLeft></ArrowLeft></DisabledButton>

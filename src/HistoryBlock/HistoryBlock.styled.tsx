@@ -1,12 +1,16 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  /* position: absolute; */
   width: 75vw;
   height: 100vh;
   margin: 0 8.3333vw 0 16.6666vw;
   box-sizing: border-box;
   z-index: -1;
+
+  @media (max-width: 640px) {
+    width: 100vw;
+    margin: 0;
+  }
 `;
 
 export const Heading = styled.h1`
@@ -22,11 +26,29 @@ export const Heading = styled.h1`
   margin-top: 15.5vh;
   border-image: linear-gradient(180deg, ${({ theme }) => theme.colors.lightBlue} -5%, ${({ theme }) => theme.colors.pink} 85%) 1 100%;
   box-sizing: border-box;
+
+  @media (max-width: 640px) {
+    margin-top: 60px;
+    margin-left: 20px;
+    padding-left: 0;
+    font-family: PT Sans;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    border: none;
+  }
 `
 
 const Line = styled.div`
   position: absolute; 
   opacity: .15;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
+  
 `
 
 export const Lines = styled.div`
@@ -80,6 +102,17 @@ export const Dates = styled.div`
   margin-top: 8vh;
   z-index: 2;
   user-select: none;
+
+  @media (max-width: 640px) {
+    margin-top: 60px;
+    font-family: PT Sans;
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 72px;
+    letter-spacing: -0.02em;
+    text-align: left;
+    gap: 35px;
+  }
 `
 
 export const DateFirst = styled.span`
@@ -96,6 +129,10 @@ export const Themes = styled.div`
   z-index: 100;
 
   > div {
+  }
+
+  @media (max-width: 640px) {
+    display: none;
   }
 ` 
 
@@ -150,6 +187,10 @@ export const Title = styled.span`
   &.show {
     opacity: 1;
   }
+
+  @media (max-width: 640px) {
+    display: none;
+  }
 `
 
 export const DatePaginator = styled.div`
@@ -159,17 +200,23 @@ export const DatePaginator = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-left: 7vh;
+  margin-left: 4vw;
   margin-top: 140px;
-`
 
-export const CurrentPage = styled.span`
-
+  @media (max-width: 640px) {
+    margin-top: 0;
+    position: relative;
+    top: 45vh;
+  }
 `
 
 export const PageButtons = styled.div`
   display: flex;
   margin-top: 10px;
+
+  @media (max-width: 640px) {
+    margin-top: 0;
+  }
 `
 
 export const ArrowLeft = styled.div`
@@ -179,6 +226,11 @@ export const ArrowLeft = styled.div`
   border-top: 2px solid ${({ theme }) => theme.colors.blackBlue};
   border-left: 2px solid ${({ theme }) => theme.colors.blackBlue};
   transform: rotate(-45deg);
+
+  @media (max-width: 640px) {
+    width: 6px;
+    height: 6px;
+  }
 `
 
 export const ArrowRight = styled.div`
@@ -188,6 +240,11 @@ export const ArrowRight = styled.div`
   border-top: 2px solid ${({ theme }) => theme.colors.blackBlue};
   border-left: 2px solid ${({ theme }) => theme.colors.blackBlue};
   transform: rotate(135deg);
+
+  @media (max-width: 640px) {
+    width: 6px;
+    height: 6px;
+  }
 `
 
 export const Button = styled.button`
@@ -202,6 +259,12 @@ export const Button = styled.button`
   margin-right: 20px;
   cursor: pointer;
   z-index: 1;
+
+  @media (max-width: 640px) {
+    width: 25px;
+    height: 25px;
+    margin-right: 8px;
+  }
 `
 
 export const DisabledButton = styled(Button)`

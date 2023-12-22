@@ -2,7 +2,7 @@
 
 <h2>Как запустить?</h2>
 <ul>
-  <li>Можно зайти на задеплоенную версию проекта <a href="only-test-phi.vercel.app">only-test-phi.vercel.app</a>
+  <li>Можно зайти на задеплоенную версию проекта <a href="https://only-test-phi.vercel.app">only-test.app</a>
   <li>Либо второй вариант:
     <ul>
       <li>Склонировать репозиторий локально на пк

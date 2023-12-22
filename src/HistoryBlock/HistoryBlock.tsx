@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { RelativeContainer, Title, Container, DateFirst, DateLast, Dates, Heading} from './HistoryBlock.styled'
 import Slider from '../Slider/Slider';
-import { getPointsOnCircle, shiftNum } from '../utils/math';
+import { getPointsOnCircle } from '../utils/math';
 import { IData } from '../types/types';
 import BackgroundLines from '../BackgroundLines/BackgroundLines';
 import DatePaginator from '../DatePaginator/DatePaginator';

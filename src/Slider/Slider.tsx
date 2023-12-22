@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import { HorizontalLine, Bullet, Paginator, ArrowLeft, ArrowRight, PrevButton, NextButton, SwiperStyled } from './Slider.styled'
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperClass } from 'swiper/types';
 import { Pagination, Navigation } from 'swiper/modules'
 import 'swiper/css';

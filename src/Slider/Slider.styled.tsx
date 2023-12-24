@@ -2,8 +2,19 @@ import styled from 'styled-components'
 import { Swiper } from 'swiper/react';
 
 export const Container = styled.div`
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  height: auto;
+  width: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all .2s;
 
-`;
+  &.show {
+    opacity: 1;
+  }
+`
 
 export const SwiperStyled = styled(Swiper)`
   width: calc(100% - 150px);
@@ -125,8 +136,9 @@ export const ArrowRight = styled.div`
 `
 
 export const Paginator = styled.div`
-  position: relative;
-  top: 90px;
+  position: absolute;
+  bottom: -22px;
+  left: calc(50% - 32px);
   display: flex;
   justify-content: center;
   gap:7px;
@@ -149,8 +161,8 @@ export const Bullet = styled.div`
 
 export const HorizontalLine = styled.div`
   position: absolute;
-  bottom: 258px;
-  width: 88%;
+  bottom: 185px;
+  width: calc(100vw - 40px);
   height: 0;
   border-bottom: 1px solid ${({theme}) => theme.colors.borders};
 `

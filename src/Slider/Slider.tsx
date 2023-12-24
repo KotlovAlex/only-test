@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react'
-import { HorizontalLine, Bullet, Paginator, ArrowLeft, ArrowRight, PrevButton, NextButton, SwiperStyled } from './Slider.styled'
+import { Container, HorizontalLine, Bullet, Paginator, ArrowLeft, ArrowRight, PrevButton, NextButton, SwiperStyled } from './Slider.styled'
 import { SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperClass } from 'swiper/types';
 import { Pagination, Navigation } from 'swiper/modules'
@@ -9,9 +9,10 @@ import 'swiper/css/pagination';
 
 type Props = {
   data: string[][],
+  isVisible: boolean
 }
 
-const Slider = ({data}: Props) => {
+const Slider = ({data, isVisible}: Props) => {
   const [swiperRef, setSwiperRef] = useState<SwiperClass>();
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [isBeginning, setIsBeginning] = useState<boolean>(true);
@@ -46,7 +47,7 @@ const Slider = ({data}: Props) => {
   },[swiperRef, activeIndex])
 
   return (
-    <>
+    <Container className={isVisible ? 'show' : ''}>
       <PrevButton style={swiperRef?.isBeginning ? displayNone : undefined} onClick={handlePrevious}><ArrowLeft></ArrowLeft></PrevButton>
       <SwiperStyled
         slidesPerView={1.5}
@@ -76,7 +77,7 @@ const Slider = ({data}: Props) => {
         <HorizontalLine></HorizontalLine>
         {data.map((_, index) =><Bullet onClick={() => swiperRef?.slideTo(index)} className={activeIndex === index ? 'active' : ''}></Bullet>)}
       </Paginator>
-    </>
+    </Container>
   )
 }
 

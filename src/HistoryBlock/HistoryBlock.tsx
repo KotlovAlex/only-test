@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from 'react'
-import { RelativeContainer, Title, Container, DateFirst, DateLast, Dates, Heading} from './HistoryBlock.styled'
+import { Title, Container, DateFirst, DateLast, Dates, Heading} from './HistoryBlock.styled'
 import Slider from '../Slider/Slider';
 import { getPointsOnCircle } from '../utils/math';
 import { IData } from '../types/types';
 import BackgroundLines from '../BackgroundLines/BackgroundLines';
 import DatePaginator from '../DatePaginator/DatePaginator';
 import CircleLinks from '../CircleLinks/CircleLinks';
+import useWindowSize from '../Hooks/useWindowSize';
 
 type Props = {
   data: IData,
 }
 
 const HistoryBlock = ({data} :Props) => {
+  const [windowWidth, windowHeight] = useWindowSize();
   const [isVisible, setIsVisible] = useState(false);
   const [currPoint, setCurrPoint] = useState<number>(1);
   const {length, themes, slides} = {...data}
-  const points = getPointsOnCircle(265, length);
+  const points = getPointsOnCircle(windowWidth * 0.138021, length);
   const changingCurrPoint = (nextPoint: number) => {
     setIsVisible(false);
     setCurrPoint(nextPoint);
@@ -28,10 +30,7 @@ const HistoryBlock = ({data} :Props) => {
     return () => clearTimeout(timeoutId);
   },[isVisible])
   return <Container>
-          <BackgroundLines></BackgroundLines>
-          <RelativeContainer className={isVisible ? 'show' : ''}>
-            <Title >{themes[currPoint - 1][1]}</Title>
-          </RelativeContainer>
+          <Title className={isVisible ? 'show' : ''}>{themes[currPoint - 1][1]}</Title>
           <Heading>Исторические <br /> даты</Heading>
           <Dates>
             <DateFirst>{slides[currPoint][0][0]}</DateFirst>
@@ -43,15 +42,14 @@ const HistoryBlock = ({data} :Props) => {
             length={length}
             currPoint={currPoint}
             changingCurrPoint={changingCurrPoint}
-          ></CircleLinks>
+            ></CircleLinks>
           <DatePaginator 
           currPage={currPoint} 
           pages={length} 
           changingCurrPoint={changingCurrPoint}
           ></DatePaginator>
-          <RelativeContainer className={isVisible ? 'show' : ''}>
-            <Slider data={slides[currPoint]}></Slider>
-          </RelativeContainer>
+          <Slider isVisible={isVisible} data={slides[currPoint]}></Slider>
+          <BackgroundLines></BackgroundLines>
         </Container>
 }
 

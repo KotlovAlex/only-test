@@ -1,19 +1,19 @@
 import styled from "styled-components"
 
 export const Paginator = styled.div`
+  position: absolute;
+  bottom: 250px;
+  left: 4vw;
   color: ${({ theme }) => theme.colors.blackBlue};
   font-size: 14px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-left: 4vw;
-  margin-top: 140px;
 
   @media (max-width: 640px) {
-    margin-top: 0;
-    position: relative;
-    top: 45vh;
+    left: 6vw;
+    bottom: 10px;
   }
 `
 

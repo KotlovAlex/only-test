@@ -13,8 +13,8 @@ function App() {
       <ThemeProvider theme={theme}>
         <HistoryBlock data={testDataLength6}></HistoryBlock>
         {/* Тестовые данные для проверки независимости блока и работы с разным количеством временных отрезков */}
-        {/* <HistoryBlock data={testDataLength5}></HistoryBlock>
-        <HistoryBlock data={testDataLength2}></HistoryBlock> */}
+        <HistoryBlock data={testDataLength5}></HistoryBlock>
+        <HistoryBlock data={testDataLength2}></HistoryBlock>
         <GlobalStyle />
       </ThemeProvider>
     </AppContainer>
